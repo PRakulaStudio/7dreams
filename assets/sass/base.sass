@@ -1,0 +1,315 @@
+@import "smart-grid"
+@import "utils"
+@import "fonts"
+@import "media"
+
+html, body
+  min-height: 100%
+  height: 100%
+  padding: 0
+  margin: 0
+
+$heightMainBlock: 735px
+$heightMainBlockLg: $heightMainBlock - 100px
+$heightMainBlockMd: $heightMainBlock - 130px
+.top-block
+  height: 100vh
+  min-height: $heightMainBlock + 65px
+  width: 100%
+  font-family: "ProximaNova", Arial, sans-serif
+  color: $colorText
+  display: flex
+  flex-direction: column
+  position: relative
+  +lg-block
+    min-height: $heightMainBlockLg + 65px
+  +md-block
+    min-height: $heightMainBlockMd + 65px
+  //+sm-block
+    max-height: max-content !important
+
+  &:before, &:after
+    content: ''
+    position: absolute
+    width: 100%
+    height: 100%
+
+  &:before
+    background: url("/assets/images/circle.png") no-repeat 60% 80%, url("/assets/images/7Dreams.png") no-repeat 15% 25%, url("/assets/images/back.jpg") no-repeat center
+    background-size: 20%, 70%, cover
+    z-index: -20
+
+  &:after
+    background: url("/assets/images/cubs.png") no-repeat top center, url("/assets/images/balls.png") no-repeat left bottom
+    z-index: -5
+    background-size: 90%, auto
+    +lg-block
+      background-size: 90%, 200px
+    +md-block
+      background-size: 90%, 200px
+
+  > *
+    width: 100%
+
+  a
+    text-decoration: none
+
+  .btn
+    background: none
+    border: none
+    display: block
+    cursor: pointer
+    border-radius: 30px
+    padding: 10px
+
+  .container
+    +wrapper
+
+  *, *:after, *:before
+    box-sizing: border-box
+  /* header */
+
+  .header
+    padding-top: 10px
+    display: flex
+    justify-content: space-between
+
+    .logo
+      display: flex
+      &__descriptor
+        padding: 5px
+        margin: auto 0
+        +md-block
+          display: none
+      &__link
+        display: flex
+      &__image
+        margin: auto 0
+      &__divider
+        margin: 10px
+        background: #ebebeb
+        width: 2px
+
+    .contacts
+      display: flex
+      text-align: right
+      p
+        margin: 0
+
+      a
+        margin-left: 3px
+
+      .contacts__group
+        padding: 0 10px
+        display: flex
+        justify-content: center
+        flex-direction: column
+
+      .call
+        display: flex
+        .call__btn
+          border: 2px solid $orange
+          color: $orange
+          &:hover
+            color: $orangeDark
+            border-color: $orangeDark
+
+      .contacts__email
+        color: $orange
+        text-decoration: underline
+        &:hover
+          color: $orangeDark
+
+      .contacts__phone
+        +fontSize(22)
+        font-weight: bold
+        color: $colorText
+        text-decoration: none
+
+  /* header */
+
+  /* main-block */
+  .main-block
+    flex-grow: 1
+    display: flex
+    min-height: $heightMainBlock
+    +lg-block
+      min-height: $heightMainBlockLg
+    +md-block
+      min-height: $heightMainBlockMd
+
+    .container
+      width: 100%
+      min-height: 100%
+      height: 100%
+      flex-grow: 1
+      display: flex
+
+    .block4
+      display: flex
+      flex-grow: 1
+      flex-direction: column
+      background: url("/assets/images/fireman.png") no-repeat right
+      background-size: contain
+      //+sm-block
+        background: none
+
+      &:before
+        position: absolute
+        content: ''
+        width: 100%
+        height: 100%
+        top: 0
+        background: url("/assets/images/block4_back.png")
+        background-size: cover
+        z-index: -10
+      .block4__wrapper
+        +row-flex
+        flex-grow: 1
+        width: 100%
+
+      .block4__left
+        +col
+        +size(6)
+        //+size-sm(12)
+        //+sm-block
+          text-align: center
+        margin: auto
+
+      .block4__right
+        +col
+        +size(6)
+        //+size-sm(12)
+        position: relative
+
+      /* doing */
+      .doing
+        text-transform: uppercase
+        font-weight: 900
+
+        .doing__line--first
+          +fontSize(49.2)
+          +lg-block
+            +fontSize(45)
+          +md-block
+            +fontSize(36.5)
+
+        .doing__line--second
+          +fontSize(81.2)
+          +lg-block
+            +fontSize(74)
+          +md-block
+            +fontSize(60)
+          color: $orange
+
+        .doing__line--third
+          +fontSize(63)
+          +lg-block
+            +fontSize(58)
+          +md-block
+            +fontSize(47)
+          font-weight: normal
+
+      .get-concept__btn
+        //+sm-block
+          margin: 30px auto
+        +lg(margin, 50px 0)
+        +md(margin, 30px 0)
+        margin: 100px 0
+        text-transform: uppercase
+        padding: 15px 20px
+        background: linear-gradient(#e67a25, #ee1d25)
+        color: #ffffff
+        font-weight: bold
+        box-shadow: 0 0 5px #ff7101
+        display: inline-block
+        &:hover
+          background: linear-gradient(darken(#ee1d25, 8%), darken(#e67a25, 8%))
+      /* doing */
+
+      /* warranty */
+      .warranty
+        .warranty__items
+          display: flex
+          .warranty__item
+            display: flex
+            flex-direction: column
+            padding: 0 10px
+            width: 160px
+            text-align: center
+            .warranty__icon
+              height: 90px
+              display: flex
+              margin: 0
+              img
+                margin: auto
+
+      .play
+        height: 200px
+        width: 200px
+        position: absolute
+        top: 350px
+        right: 0
+        //+sm-block
+          position: relative
+          top: 0
+
+        .play__link
+          display: block
+          background: url("/assets/images/play.png") no-repeat center
+          width: inherit
+          height: inherit
+          background-size: contain
+
+        .play__text
+          color: $colorTextLight
+          background: #ed2325
+          text-align: right
+          position: absolute
+          padding: 5px
+          font-style: italic
+          font-weight: bold
+
+          &:after
+            content: ''
+            top: 0
+            position: absolute
+            right: -6px
+            border: 15px solid #ed2325
+            border-right: 3px solid transparent
+            border-bottom-color: transparent
+            border-left-width: 3px
+
+          &:before
+            content: ''
+            top: 0
+            position: absolute
+            left: -6px
+            border: 15px solid #ed2325
+            border-left: 3px solid transparent
+            border-top-color: transparent
+            border-right-width: 3px
+
+  .play__text--first
+    top: 30px
+    left: -95px
+
+  .play__text--second
+    top: 70px
+    left: -80px
+
+
+#call-form
+  font-family: "ProximaNova", Arial, sans-serif
+  background: #fff
+  width: 600px
+  margin: auto
+  text-align: center
+  border-radius: 20px
+
+  .call-form__title
+    text-transform: uppercase
+  .call-form__input
+  .call-form__btn
+    text-transform: uppercase
+
