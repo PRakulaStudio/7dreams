@@ -57,7 +57,7 @@ body {
 
 .top-block {
     height: 100vh;
-    min-height: 800px;
+    min-height: 905px;
     width: 100%;
     font-family: "ProximaNova", Arial, sans-serif;
     color: #333;
@@ -84,19 +84,21 @@ body {
 }
 
 .top-block:before {
+    /* TODO: url("../images/block4_back.png") no-repeat 100% 100% */
     background: url("../images/circle.png") no-repeat 60% 80%, url("../images/7Dreams.png") no-repeat 15% 25%, url("../images/back.jpg") no-repeat center;
     background-size: 20%, 70%, cover;
-    z-index: -20;
+    z-index: 1;
 }
 
 .top-block:after {
     background: url("../images/cubs.png") no-repeat top center, url("../images/balls.png") no-repeat left bottom;
-    z-index: -5;
+    z-index: 2;
     background-size: 90%, auto;
 }
 
 .top-block > * {
     width: 100%;
+    /*z-index: 5;*/
 }
 
 .top-block a {
@@ -126,6 +128,7 @@ body {
 }
 
 .top-block .header {
+    z-index: 3;
     padding-top: 10px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -133,6 +136,10 @@ body {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
+}
+
+.top-block .header:after {
+    content: none;
 }
 
 .top-block .header .logo {
@@ -261,17 +268,18 @@ body {
     /* doing */
     /* doing */
     /* warranty */
+    z-index: 3;
 }
 
 .top-block .main-block .block4:before {
-    position: absolute;
+    /*position: absolute;
     content: '';
     width: 100%;
     height: 100%;
     top: 0;
     background: url("../images/block4_back.png");
     background-size: cover;
-    z-index: -10;
+    z-index: -10;*/
 }
 
 .top-block .main-block .block4 .block4__wrapper {
@@ -466,6 +474,7 @@ body {
     border-radius: 25px;
     color: white;
     background: linear-gradient(#e67a25, #ee1d25);
+    cursor: pointer;
 }
 
 #call-form .inputs-section {
@@ -492,13 +501,13 @@ body {
     position: absolute;
     left: -40px;
     bottom: 40px;
-    z-index: 1;
+    z-index: 8;
     pointer-events: none;
 }
 
 #call-form .background-wrapper {
     position: absolute;
-    z-index: 0;
+    z-index: 7;
     left: 0;
     top: 0;
     width: 100%;
@@ -510,7 +519,7 @@ body {
     position: absolute;
     left: 10px;
     bottom: 0;
-    z-index: 2;
+    z-index: 9;
     pointer-events: none;
 }
 
@@ -528,6 +537,50 @@ body {
     position: absolute;
     top: -22.5px;
     right: -22.5px;
+}
+
+.video-popup {
+    display: none;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 21;
+}
+
+.video-popup .close {
+    display: none;
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    /*color: red;*/
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    z-index: 25;
+    font-size: 50px;
+    background-image: url("../icons/close.png");
+    background-size: contain;
+    color: transparent;
+}
+
+.video-popup:before {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 20;
+}
+
+.video-popup:target, .video-popup:target:before, .video-popup:target .close {
+    display: block;
 }
 
 @media screen and (max-width: 1100px) {

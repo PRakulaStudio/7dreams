@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/popup.min.css">
+    <script src="/assets/js/jquery-1.7.2.min.js"></script>
+    <script src="/assets/js/popup.js"></script>
+</head>
+<body>
+<section class="top-block">
+    <header class="container header">
+        <div class="logo">
+            <a class="logo__link" href="">
+                <img class="logo__image" src="/assets/images/logo.png" alt="">
+            </a>
+            <div class="logo__divider"></div>
+            <div class="logo__descriptor">Организация корпоративных<br>мероприятий в Москве!</div>
+        </div>
+        <div class="contacts">
+            <div class="contacts__group">
+                <p>
+                    <a class="contacts__email" href="mailto:prazdnik@7dreams.ru">prazdnik@7dreams.ru</a>
+                </p>
+                <p>
+
+                    <a href="">
+                        <img class="contacts__telegram" src="/assets/icons/telegram-logo.png" alt="">
+                    </a>
+                    <a href="">
+                        <img class="contacts__whatsapp" src="/assets/icons/whatsapp.png" alt="">
+                    </a>
+                    <a href="" class="contacts__phone">8 800 222 50 66</a>
+                </p>
+            </div>
+            <div class="contacts__group call">
+                <a class="btn call__btn popup-with-form" href="#call-form">Заказать звонок</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-block">
+        <div class="block4">
+            <div class="container">
+                <div class="block4__wrapper">
+                    <div class="block4__left">
+                        <h1 class="doing">
+                            <span class="doing__line--first">Делаем реально</span><br>
+                            <span class="doing__line--second">огненные</span><br>
+                            <span class="doing__line--third">корпоративы!</span>
+                        </h1>
+                        <a class="btn get-concept__btn popup-with-form" href="#call-form">Получите 3 варианта концепта и сметы</a>
+                        <div class="warranty">
+                            <h2 class="warranty__title">Гарантируем успех Вашего мероприятия</h2>
+                            <div class="warranty__items">
+                                <div class="warranty__item">
+                                    <p class="warranty__icon"><img src="/assets/icons/medal%20(1).png" alt=""></p>
+                                    <p>11 лет опыта</p>
+                                </div>
+                                <div class="warranty__item">
+                                    <p class="warranty__icon"><img src="/assets/icons/movie-player.png" alt=""></p>
+                                    <p>Работаем с топ-режиссерами </p>
+                                </div>
+                                <div class="warranty__item">
+                                    <p class="warranty__icon"><img src="/assets/icons/discount.png" alt=""></p>
+                                    <p>Даем партнерские скидки от наших подрядчиков</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block4__right">
+                        <div class="play">
+                            <a href="" class="play__link"></a>
+                            <p class="play__text play__text--first">Посмотрите 1 минуту</p>
+                            <p class="play__text play__text--second">наше промо-видео</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- form itself -->
+<form id="call-form" class="mfp-hide white-popup-block">
+    <h2 class="call-form__title">Заказать звонок</h2>
+    <p>Здравствуйте! Меня зовут Александр Перашн, и я готов обсудить с Вами Ваш праздник! Оставьте свои контакты и я свяжусь с Вами.</p>
+    <div class="call-form__photo">
+        <img src="/assets" alt="">
+    </div>
+    <p>
+        <input type="text" class="call-form__input">
+    </p>
+    <p>
+        <input type="text" class="call-form__input">
+    </p>
+    <p>
+        <button class="call-form__btn btn">Оставить заявку</button>
+    </p>
+    <p>Нажимая кнопку «Отправить» я соглашаюсь с обработкой своих данных в соответствии с политикой конфиденциальности</p>
+</form>
+<script>
+    $(document).ready(function () {
+        $('.popup-with-form').magnificPopup({
+            type: 'inline',
+            preloader: false,
+            focus: '#name',
+            callbacks: {
+                beforeOpen: function () {
+                    if ($(window).width() < 700) {
+                        this.st.focus = false;
+                    } else {
+                        this.st.focus = '#name';
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
