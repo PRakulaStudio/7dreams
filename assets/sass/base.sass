@@ -186,10 +186,15 @@ $heightMainBlockXs: $heightMainBlock + 330px
     flex-grow: 1
     display: flex
     min-height: $heightMainBlock
+
     +lg-block
       min-height: $heightMainBlockLg
     +md-block
       min-height: $heightMainBlockMd
+      &.block3
+        min-height: $heightMainBlockMd + 540px
+      &.block1
+        min-height: $heightMainBlockMd + 400px
     +sm-block
       text-align: center
 
@@ -200,16 +205,18 @@ $heightMainBlockXs: $heightMainBlock + 330px
       flex-grow: 1
       display: flex
 
-    .block4
+    .block
       display: flex
       flex-grow: 1
       flex-direction: column
-      background: url("../images/fireman.png") no-repeat right
       background-size: contain
+      background-repeat: no-repeat
+      background-position: right
       z-index: 3
       width: 100%
       +sm-block
-        background: none
+        background-image: none !important
+
       //+sm-block
         background: none
 
@@ -222,12 +229,12 @@ $heightMainBlockXs: $heightMainBlock + 330px
         background: url("../images/block4_back.png")
         background-size: cover
         z-index: -10
-      .block4__wrapper
+      .block__wrapper
         +row-flex
         flex-grow: 1
         width: 100%
 
-      .block4__left
+      .block__left
         +col
         +size(6)
         +size-md(7)
@@ -239,7 +246,7 @@ $heightMainBlockXs: $heightMainBlock + 330px
         +sm-block
           margin-top: 0
 
-      .block4__right
+      .block__right
         +col
         +size(6)
         +size-md(5)
@@ -247,41 +254,113 @@ $heightMainBlockXs: $heightMainBlock + 330px
         //+size-sm(12)
         position: relative
 
-      /* doing */
       .doing
-        text-transform: uppercase
-        font-weight: 900
-        margin-top: 0
+        display: none
+      &.block4
+        background-image: url("../images/fireman.png")
+        /* doing */
+        .doing
+          display: block
+          text-transform: uppercase
+          margin-top: 0
+          h1
+            font-weight: 900
+          .doing__line--first
+            +fontSize(49.2)
+            +lg-block
+              +fontSize(45)
+            +md-block
+              +fontSize(36.5)
+            +sm-block
+              +fontSize(27)
 
-        .doing__line--first
-          +fontSize(49.2)
-          +lg-block
-            +fontSize(45)
-          +md-block
-            +fontSize(36.5)
-          +sm-block
-            +fontSize(27)
+          .doing__line--second
+            +fontSize(81.2)
+            +lg-block
+              +fontSize(74)
+            +md-block
+              +fontSize(60)
+            +sm-block
+              +fontSize(44)
+            color: $orange
 
-        .doing__line--second
-          +fontSize(81.2)
-          +lg-block
-            +fontSize(74)
-          +md-block
+          .doing__line--third
+            +fontSize(63)
+            +lg-block
+              +fontSize(58)
+            +md-block
+              +fontSize(47)
+            +sm-block
+              +fontSize(34)
+            font-weight: normal
+      .corporates
+        display: none
+      &.block2
+        .corporates
+          display: block
+          h1
+            font-weight: 300
+            text-transform: uppercase
+            +fontSize(37)
+            +sm-block
+              +fontSize(22)
+
+          .corporates__orange
+            color: $orange
+          .corporates__black
+            font-weight: 900
             +fontSize(60)
-          +sm-block
-            +fontSize(44)
-          color: $orange
+            +sm-block
+              +fontSize(36)
 
-        .doing__line--third
-          +fontSize(63)
+          .corporates__small
+            font-weight: 900
+            +fontSize(16)
+
+      .cool_phrase
+        display: none
+      &.block3, &.block2, &.block1
+        background-image: url("../images/block3_right.png")
+      &.block3
+        .cool_phrase
+          display: block
+          h1
+            text-transform: uppercase
+            font-weight: 900
+            +fontSize(32)
+            span
+              color: $orange
+          p
+            +fontSize(20)
+        .get-concept__btn
+          margin-top: 0
+
+      .economy
+        display: none
+      &.block1
+        .economy
+          display: block
+          h1
+            font-weight: 900
+            text-transform: uppercase
+            +fontSize(40)
+            +lg-block
+              +fontSize(30)
+            +sm-block
+              +fontSize(20)
+            .economy__orange
+              color: $orange
+              +fontSize(100)
+              +lg-block
+                +fontSize(80)
+              +sm-block
+                +fontSize(66)
+          p
+            font-weight: 300
+            margin-top: 0
+        .get-concept__btn
           +lg-block
-            +fontSize(58)
-          +md-block
-            +fontSize(47)
-          +sm-block
-            +fontSize(34)
-          font-weight: normal
-
+            margin: 25px 0
       .get-concept__btn
         //+sm-block
           margin: 30px auto
@@ -341,7 +420,7 @@ $heightMainBlockXs: $heightMainBlock + 330px
         animation: play 1s infinite alternate
         -webkit-animation: play 1s infinite alternate
         +sm-block
-          top: -140px
+          top: -120px
         //+sm-block
           position: relative
           top: 0
@@ -390,7 +469,7 @@ $heightMainBlockXs: $heightMainBlock + 330px
     top: 70px
     left: -80px
 
-#call-form
+.call-form
   font-family: "ProximaNova", Arial, sans-serif
   background: #fff
   max-width: 600px
@@ -478,7 +557,7 @@ $heightMainBlockXs: $heightMainBlock + 330px
     width: 50px
     height: 50px
     border-radius: 50%
-    color: white
+    color: white !important
     background-clip: content-box
     border: 5px solid rgba(255, 83, 0, 0.4)
     line-height: 30px

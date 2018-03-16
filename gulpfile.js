@@ -9,7 +9,7 @@ const notify = require('gulp-notify');
 const config = {
     root: './assets/',
     html: {
-        src: 'index.html'
+        src: 'index.dev.html'
     },
     sass: {
         watch: 'sass/**/*.sass',
