@@ -11,6 +11,10 @@
 </head>
 <body>
 <section class="top-block">
+    <div class="parallax">
+        <div class="parallax__layer parallax__layer--back"></div>
+        <div class="parallax__layer parallax__layer--base"></div>
+    </div>
     <header class="container header">
         <div class="logo">
             <a class="logo__link" href="">
@@ -18,6 +22,9 @@
             </a>
             <div class="logo__divider"></div>
             <div class="logo__descriptor">Организация корпоративных<br>мероприятий в Москве!</div>
+        </div>
+        <div class="call">
+            <a class="btn call__btn popup-with-form" href="#call-form">Заказать звонок</a>
         </div>
         <div class="contacts">
             <div class="contacts__group">
@@ -34,9 +41,6 @@
                     </a>
                     <a href="" class="contacts__phone">8 800 222 50 66</a>
                 </p>
-            </div>
-            <div class="contacts__group call">
-                <a class="btn call__btn popup-with-form" href="#call-form">Заказать звонок</a>
             </div>
         </div>
     </header>
@@ -60,7 +64,7 @@
                                     <p>11 лет опыта</p>
                                 </div>
                                 <div class="warranty__item">
-                                    <p class="warranty__icon"><img src="/assets/icons/movie-player.png" alt=""></p>
+                                    <p class="warranty__icon"><img src="/assets/icons/creativity.png" alt=""></p>
                                     <p>Работаем с топ-режиссерами </p>
                                 </div>
                                 <div class="warranty__item">
@@ -89,7 +93,6 @@
     <h2 class="call-form__title">Заказать звонок</h2>
     <p>Здравствуйте! Меня зовут Александр Перашн, и я готов обсудить с Вами Ваш праздник! Оставьте свои контакты и я свяжусь с Вами.</p>
     <div class="call-form__photo">
-        <img src="/assets" alt="">
     </div>
     <p>
         <input type="text" class="call-form__input">
@@ -118,6 +121,9 @@
                 }
             }
         });
+        window.addEventListener('scroll', function () {
+            $(".parallax .parallax__layer--base").css('background-position', 'center ' + ($(document).scrollTop() / 5.0) + 'px');
+        })
     });
 </script>
 </body>

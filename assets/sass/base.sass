@@ -9,10 +9,16 @@ html, body
   padding: 0
   margin: 0
 
-$heightMainBlock: 735px
+//$heightMainBlock: 735px
+$heightMainBlock: 840px
 $heightMainBlockLg: $heightMainBlock - 100px
 $heightMainBlockMd: $heightMainBlock - 130px
+$heightMainBlockXs: $heightMainBlock + 330px
+.top_sec
+  height: auto !important
+
 .top-block
+  box-sizing: border-box
   height: 100vh
   min-height: $heightMainBlock + 65px
   width: 100%
@@ -21,10 +27,15 @@ $heightMainBlockMd: $heightMainBlock - 130px
   display: flex
   flex-direction: column
   position: relative
+  background: #fff
   +lg-block
     min-height: $heightMainBlockLg + 65px
   +md-block
     min-height: $heightMainBlockMd + 65px
+  +sm-block
+    max-height: 100% !important
+    height: 100%
+    min-height: $heightMainBlockXs
   //+sm-block
     max-height: max-content !important
 
@@ -35,21 +46,23 @@ $heightMainBlockMd: $heightMainBlock - 130px
     height: 100%
 
   &:before
-    background: url("/assets/images/circle.png") no-repeat 60% 80%, url("/assets/images/7Dreams.png") no-repeat 15% 25%, url("/assets/images/back.jpg") no-repeat center
+    /* url("../images/block4_back.png") no-repeat 100% 100% */
+    background: url("../images/circle.png") no-repeat 60% 80%, url("../images/7Dreams.png") no-repeat 15% 25%, url("../images/back.jpg") no-repeat center
     background-size: 20%, 70%, cover
-    z-index: -20
+    z-index: 1
 
   &:after
-    background: url("/assets/images/cubs.png") no-repeat top center, url("/assets/images/balls.png") no-repeat left bottom
-    z-index: -5
-    background-size: 90%, auto
+    background: url("../images/balls.png") no-repeat left bottom
+    z-index: 2
+    background-size: 25vmin
     +lg-block
-      background-size: 90%, 200px
+      background-size: 200px
     +md-block
-      background-size: 90%, 200px
+      background-size: 200px
 
   > *
     width: 100%
+  /*z-index: 5*/
 
   a
     text-decoration: none
@@ -67,64 +80,104 @@ $heightMainBlockMd: $heightMainBlock - 130px
 
   *, *:after, *:before
     box-sizing: border-box
+
+  .parallax
+    perspective: 1px
+    height: 100vh
+    overflow-x: hidden
+    overflow-y: auto
+    position: absolute
+    z-index: 2
+
+  .parallax__layer
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+  .parallax__layer--base
+    background: url("../images/parallax-top.png") no-repeat top center
+    background-size: 90%
+
+  .parallax__layer--back
+    background: url("../images/parallax-back.png") no-repeat top center
+    background-size: 90%
+
   /* header */
 
   .header
     padding-top: 10px
+    z-index: 3
     display: flex
-    justify-content: space-between
+    +sm-block
+      flex-direction: column
+      text-align: center
 
     .logo
-      display: flex
-      &__descriptor
-        padding: 5px
-        margin: auto 0
-        +md-block
-          display: none
-      &__link
-        display: flex
-      &__image
-        margin: auto 0
-      &__divider
-        margin: 10px
-        background: #ebebeb
-        width: 2px
+      +row-flex
+      flex-grow: 1
+    .logo__descriptor
+      padding: 5px
+      margin: auto 0
+      +md-block
+        display: none
+    .logo__link
+      +sm-block
+        margin: auto
+    .logo__divider
+      margin: 10px
+      background: #ebebeb
+      width: 2px
+      +sm-block
+        display: none
+
+    .call
+      order: 1
+      margin: auto 0 auto auto
+      +sm-block
+        margin: 10px auto
+
+      +sm-block
+        order: 0
+      .call__btn
+        border: 2px solid #ff7101
+        color: #ff7101
+        width: 178px
+        text-align: center
+        margin: auto auto auto 20px
+        +sm-block
+          margin: auto
+
+        &:hover
+          color: #dc6100
+          border-color: #dc6100
 
     .contacts
-      display: flex
-      text-align: right
+      margin: auto 0 auto auto
+      +sm-block
+        margin: 10px auto
       p
         margin: 0
-
+        text-align: right
+        +sm-block
+          text-align: center
       a
-        margin-left: 3px
+        margin-left: 6px
 
-      .contacts__group
-        padding: 0 10px
-        display: flex
-        justify-content: center
-        flex-direction: column
+    .contacts__email
+      color: #ff7101
+      text-decoration: underline
+      &:hover
+        color: #dc6100
 
-      .call
-        display: flex
-        .call__btn
-          border: 2px solid $orange
-          color: $orange
-          &:hover
-            color: $orangeDark
-            border-color: $orangeDark
-
-      .contacts__email
-        color: $orange
-        text-decoration: underline
-        &:hover
-          color: $orangeDark
-
-      .contacts__phone
-        +fontSize(22)
-        font-weight: bold
-        color: $colorText
-        text-decoration: none
+    .contacts__phone
+      +fontSize(24)
+      font-weight: bold
+      color: #333
+      text-decoration: none
 
   /* header */
 
@@ -137,6 +190,8 @@ $heightMainBlockMd: $heightMainBlock - 130px
       min-height: $heightMainBlockLg
     +md-block
       min-height: $heightMainBlockMd
+    +sm-block
+      text-align: center
 
     .container
       width: 100%
@@ -149,18 +204,22 @@ $heightMainBlockMd: $heightMainBlock - 130px
       display: flex
       flex-grow: 1
       flex-direction: column
-      background: url("/assets/images/fireman.png") no-repeat right
+      background: url("../images/fireman.png") no-repeat right
       background-size: contain
+      z-index: 3
+      width: 100%
+      +sm-block
+        background: none
       //+sm-block
         background: none
 
-      &:before
+      //&:before
         position: absolute
         content: ''
         width: 100%
         height: 100%
         top: 0
-        background: url("/assets/images/block4_back.png")
+        background: url("../images/block4_back.png")
         background-size: cover
         z-index: -10
       .block4__wrapper
@@ -171,14 +230,20 @@ $heightMainBlockMd: $heightMainBlock - 130px
       .block4__left
         +col
         +size(6)
+        +size-md(7)
+        +size-sm(12)
         //+size-sm(12)
         //+sm-block
           text-align: center
         margin: auto
+        +sm-block
+          margin-top: 0
 
       .block4__right
         +col
         +size(6)
+        +size-md(5)
+        +size-sm(12)
         //+size-sm(12)
         position: relative
 
@@ -186,6 +251,7 @@ $heightMainBlockMd: $heightMainBlock - 130px
       .doing
         text-transform: uppercase
         font-weight: 900
+        margin-top: 0
 
         .doing__line--first
           +fontSize(49.2)
@@ -193,6 +259,8 @@ $heightMainBlockMd: $heightMainBlock - 130px
             +fontSize(45)
           +md-block
             +fontSize(36.5)
+          +sm-block
+            +fontSize(27)
 
         .doing__line--second
           +fontSize(81.2)
@@ -200,6 +268,8 @@ $heightMainBlockMd: $heightMainBlock - 130px
             +fontSize(74)
           +md-block
             +fontSize(60)
+          +sm-block
+            +fontSize(44)
           color: $orange
 
         .doing__line--third
@@ -208,41 +278,59 @@ $heightMainBlockMd: $heightMainBlock - 130px
             +fontSize(58)
           +md-block
             +fontSize(47)
+          +sm-block
+            +fontSize(34)
           font-weight: normal
 
       .get-concept__btn
         //+sm-block
           margin: 30px auto
-        +lg(margin, 50px 0)
         +md(margin, 30px 0)
-        margin: 100px 0
+        +sm-block
+          margin: 10px 0
+        margin: 50px 0
         text-transform: uppercase
         padding: 15px 20px
-        background: linear-gradient(#e67a25, #ee1d25)
+        background: linear-gradient(180deg, #e67a25, #ee1d25)
         color: #ffffff
         font-weight: bold
         box-shadow: 0 0 5px #ff7101
         display: inline-block
         &:hover
-          background: linear-gradient(darken(#ee1d25, 8%), darken(#e67a25, 8%))
+          animation: getConceptBtn 1s infinite alternate
+          -webkit-animation: getConceptBtn 1s infinite alternate
+          -moz-animation: AnimationName 1s ease infinite
+          background: linear-gradient(269deg, #e67a25, #ee1d25)
+          background-size: 500% 100%
+
+      //background: linear-gradient(0, #e67a25, #ee1d25)
+
       /* doing */
 
       /* warranty */
       .warranty
+        margin-bottom: 50px
         .warranty__items
           display: flex
+          +sm-block
+            flex-direction: column
           .warranty__item
+            text-shadow: 0 0 3px white
+            font-weight: bold
             display: flex
             flex-direction: column
-            padding: 0 10px
+            padding: 10px 10px 0
             width: 160px
             text-align: center
+            +sm-block
+              width: 100%
             .warranty__icon
               height: 90px
               display: flex
               margin: 0
               img
                 margin: auto
+                height: 84px
 
       .play
         height: 200px
@@ -250,13 +338,17 @@ $heightMainBlockMd: $heightMainBlock - 130px
         position: absolute
         top: 350px
         right: 0
+        animation: play 1s infinite alternate
+        -webkit-animation: play 1s infinite alternate
+        +sm-block
+          top: -140px
         //+sm-block
           position: relative
           top: 0
 
         .play__link
           display: block
-          background: url("/assets/images/play.png") no-repeat center
+          background: url("../images/play.png") no-repeat center
           width: inherit
           height: inherit
           background-size: contain
@@ -298,18 +390,175 @@ $heightMainBlockMd: $heightMainBlock - 130px
     top: 70px
     left: -80px
 
-
 #call-form
   font-family: "ProximaNova", Arial, sans-serif
   background: #fff
-  width: 600px
+  max-width: 600px
   margin: auto
   text-align: center
   border-radius: 20px
+  padding: 40px
+  position: relative
+  /*overflow: hidden*/
+  min-height: 450px
+
+  *
+    z-index: 10
+  p
+    margin: 25px 0
+    z-index: 10
 
   .call-form__title
     text-transform: uppercase
+
   .call-form__input
+
   .call-form__btn
     text-transform: uppercase
+    height: 50px
+    font-size: 20px
+    line-height: 50px
+    width: 250px
+    border-radius: 25px
+    color: white
+    background: linear-gradient(180deg, #e67a25, #ee1d25)
+    cursor: pointer
 
+  .inputs-section
+    position: absolute
+    right: 40px
+    bottom: 40px
+    z-index: 8
+    width: 50%
+    +sm-block
+      position: relative
+      width: 100%
+      right: 0
+      bottom: 0
+
+  .call-form__input
+    height: 50px
+    font-size: 20px
+    line-height: 50px
+    width: calc(100% - 55px)
+    padding: 0 25px
+    border-radius: 25px
+    border: 1px solid #d4d5d7
+    /*color: #989898*/
+    color: black
+
+  .background-circle
+    position: absolute
+    left: -40px
+    bottom: 40px
+    z-index: 1
+    pointer-events: none
+
+  .background-wrapper
+    position: absolute
+    z-index: 7
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+    +sm-block
+      display: none
+
+  .background-man
+    position: absolute
+    left: 10px
+    bottom: 0
+    z-index: 9
+    pointer-events: none
+
+  .mfp-close
+    opacity: 1
+    background: #FF5300
+    width: 50px
+    height: 50px
+    border-radius: 50%
+    color: white
+    background-clip: content-box
+    border: 5px solid rgba(255, 83, 0, 0.4)
+    line-height: 30px
+    text-align: center
+    position: absolute
+    top: -22.5px
+    right: -22.5px
+
+.video-popup
+  display: none
+  position: fixed
+  margin: auto
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: black
+  z-index: 21
+
+  .close
+    display: none
+    position: fixed
+    right: 50px
+    top: 50px
+    /*color: red*/
+    height: 50px
+    width: 50px
+    text-align: center
+    line-height: 50px
+    z-index: 25
+    font-size: 50px
+    background-image: url("../icons/close.png")
+    background-size: contain
+    color: transparent
+
+  &:before
+    display: none
+    position: fixed
+    left: 0
+    top: 0
+    width: 100vw
+    height: 100vh
+    background: rgba(0, 0, 0, 0.7)
+    z-index: 20
+
+  &:target, &:target:before, &:target .close
+    display: block
+
+@keyframes play
+  from
+    opacity: 1
+  to
+    opacity: 0.75
+
+@-webkit-keyframes play
+  from
+    opacity: 1
+  to
+    opacity: 0.75
+
+@keyframes getConceptBtn
+  0%
+    background-position: 0 52%
+  50%
+    background-position: 100% 49%
+  100%
+    background-position: 0 52%
+
+@-webkit-keyframes getConceptBtn
+  0%
+    background-position: 0 52%
+  50%
+    background-position: 100% 49%
+  100%
+    background-position: 0 52%
+
+@-moz-keyframes getConceptBtn
+  0%
+    background-position: 0 52%
+  50%
+    background-position: 100% 49%
+  100%
+    background-position: 0 52%

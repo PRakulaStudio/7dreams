@@ -77,10 +77,13 @@ let settings = {
     offset: '15px', /* gutter width px || % */
     mobileFirst: false, /* mobileFirst ? 'min-width' : 'max-width' */
     container: {
-        maxWidth: '1200px', /* max-width оn very large screen */
+        maxWidth: '1120px', /* max-width оn very large screen */
         fields: '15px' /* side fields */
     },
     breakPoints: {
+        xl: {
+            width: '1366px', /* -> @media (max-width: 1100px) */
+        },
         lg: {
             width: '1100px', /* -> @media (max-width: 1100px) */
         },
